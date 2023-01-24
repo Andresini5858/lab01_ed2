@@ -2673,6 +2673,9 @@ void global_interruptions_off(void);
 void peripheral_interruptions_on(void);
 void portB_interruptions_on(void);
 void ADC_interruptions_on(void);
+void Timer0_interruption_on(void);
+void Timer0_source(void);
+void Timer0_prescaler256(void);
 void pullup_RB7(void);
 void pullup_RB6(void);
 void interrupt_onchange_RB7(void);
@@ -2699,13 +2702,52 @@ void ADC_on(void);
 int ADC_conversion(void);
 # 30 "main.c" 2
 
+# 1 "./displays.h" 1
 
 
-int bandera=0;
-int num_adc;
+
+
+
+# 1 "E:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c90\\stdint.h" 1 3
+# 6 "./displays.h" 2
+
+
+unsigned int H1=0;
+unsigned int H2=0;
+int dis=0;
+int value;
+
+
+unsigned char nums[] = {
+    0b00111111,
+    0b00000110,
+    0b01011011,
+    0b01001111,
+    0b01100110,
+    0b01101101,
+    0b01111101,
+    0b00000111,
+    0b01111111,
+    0b01100111,
+    0b01110111,
+    0b01111100,
+    0b00111001,
+    0b01011110,
+    0b01111001,
+    0b01110001,
+};
+
+void display_hex(int value);
+void mux(int selector);
+# 31 "main.c" 2
+
+
+
+int bandera = 0;
+int num_adc = 0;
+int select = 0;
 
 void contador(void);
-void displays(void);
 
 void main(void){
     osc4MHz();
@@ -2718,8 +2760,12 @@ void main(void){
     pinRB7_digin();
     pinRB6_digin();
     pinRB0_digin();
+    portB_pullups();
     global_interruptions_on();
     peripheral_interruptions_on();
+    Timer0_interruption_on();
+    Timer0_source();
+    Timer0_prescaler256();
     portB_interruptions_on();
     ADC_interruptions_on();
     pullup_RB7();
@@ -2731,16 +2777,30 @@ void main(void){
     ADC_8bits();
     ADC_AN12();
     ADC_on();
+    TMR0 = 236;
     while(1){
         ADCON0bits.GO = 1;
-        display_hex();
+        display_hex(num_adc);
+
     }
 }
 
 void __attribute__((picinterrupt(("")))) isr(void){
+    if (INTCONbits.T0IF == 1){
+        INTCONbits.T0IF = 0;
+        TMR0 = 236;
+        if (select == 0){
+            mux(select);
+            select = 1;
+        }
+        if (select == 1){
+            mux(select);
+            select = 0;
+        }
+    }
     if (INTCONbits.RBIF == 1){
-        contador();
         INTCONbits.RBIF = 0;
+        contador();
     }
     if (PIR1bits.ADIF == 1){
         PIR1bits.ADIF = 0;
@@ -2753,14 +2813,12 @@ void contador(void){
     if (PORTBbits.RB6 == 0){
         bandera = 1;}
     if (PORTBbits.RB6 == 1 && bandera == 1){
-        _delay((unsigned long)((10)*(4000000/4000.0)));
         PORTD++;
         bandera = 0;
     }
     if (PORTBbits.RB7 == 0){
         bandera = 2;}
     if (PORTBbits.RB7 == 1 && bandera == 2){
-        _delay((unsigned long)((10)*(4000000/4000.0)));
         PORTD--;
         bandera = 0;
     }

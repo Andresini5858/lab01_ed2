@@ -90,6 +90,21 @@ void ADC_interruptions_on(void){
     PIE1bits.ADIE = 1; // Habiliar interrupcion del conversor ADC
 }
 
+void Timer0_interruption_on(void){
+    INTCONbits.T0IE = 1; // Habiliar interrupcion del timer0
+}
+
+void Timer0_source(void){
+    OPTION_REGbits.T0CS = 0; 
+    OPTION_REGbits.PSA = 0;
+}
+
+void Timer0_prescaler256(void){
+    OPTION_REGbits.PS2 = 1; //Prescaler de 256
+    OPTION_REGbits.PS1 = 1;
+    OPTION_REGbits.PS0 = 1;
+}
+
 void pullup_RB7(void){
     WPUBbits.WPUB7 = 1; // Activar pullup puerto b7
 }

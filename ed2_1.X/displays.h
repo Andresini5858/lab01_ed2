@@ -8,6 +8,8 @@
 unsigned int H1=0; // variable para guardar las "unidades" del valor hexadecimal
 unsigned int H2=0; // variable para guardar las "decenas" del valor hexadecimal
 int dis=0; // variable para guardar el valor del ADRESH
+int value;
+//int selector;
 
 unsigned char nums[] = { //arreglo para valores del display de 7 segementos
     0b00111111, //0
@@ -28,7 +30,8 @@ unsigned char nums[] = { //arreglo para valores del display de 7 segementos
     0b01110001, //F
 };
 
-void display_hex(void);
+void display_hex(int value);
+void mux(int selector);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

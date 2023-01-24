@@ -619,54 +619,102 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 155 ]
 }
 "93
-[; ;setup.c: 93: void pullup_RB7(void){
-[v _pullup_RB7 `(v ~T0 @X0 1 ef ]
+[; ;setup.c: 93: void Timer0_interruption_on(void){
+[v _Timer0_interruption_on `(v ~T0 @X0 1 ef ]
 {
-[e :U _pullup_RB7 ]
+[e :U _Timer0_interruption_on ]
 [f ]
 "94
-[; ;setup.c: 94:     WPUBbits.WPUB7 = 1;
-[e = . . _WPUBbits 1 7 -> -> 1 `i `uc ]
+[; ;setup.c: 94:     INTCONbits.T0IE = 1;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
 "95
 [; ;setup.c: 95: }
 [e :UE 156 ]
 }
 "97
-[; ;setup.c: 97: void pullup_RB6(void){
+[; ;setup.c: 97: void Timer0_source(void){
+[v _Timer0_source `(v ~T0 @X0 1 ef ]
+{
+[e :U _Timer0_source ]
+[f ]
+"98
+[; ;setup.c: 98:     OPTION_REGbits.T0CS = 0;
+[e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
+"99
+[; ;setup.c: 99:     OPTION_REGbits.PSA = 0;
+[e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
+"100
+[; ;setup.c: 100: }
+[e :UE 157 ]
+}
+"102
+[; ;setup.c: 102: void Timer0_prescaler256(void){
+[v _Timer0_prescaler256 `(v ~T0 @X0 1 ef ]
+{
+[e :U _Timer0_prescaler256 ]
+[f ]
+"103
+[; ;setup.c: 103:     OPTION_REGbits.PS2 = 1;
+[e = . . _OPTION_REGbits 1 2 -> -> 1 `i `uc ]
+"104
+[; ;setup.c: 104:     OPTION_REGbits.PS1 = 1;
+[e = . . _OPTION_REGbits 1 1 -> -> 1 `i `uc ]
+"105
+[; ;setup.c: 105:     OPTION_REGbits.PS0 = 1;
+[e = . . _OPTION_REGbits 1 0 -> -> 1 `i `uc ]
+"106
+[; ;setup.c: 106: }
+[e :UE 158 ]
+}
+"108
+[; ;setup.c: 108: void pullup_RB7(void){
+[v _pullup_RB7 `(v ~T0 @X0 1 ef ]
+{
+[e :U _pullup_RB7 ]
+[f ]
+"109
+[; ;setup.c: 109:     WPUBbits.WPUB7 = 1;
+[e = . . _WPUBbits 1 7 -> -> 1 `i `uc ]
+"110
+[; ;setup.c: 110: }
+[e :UE 159 ]
+}
+"112
+[; ;setup.c: 112: void pullup_RB6(void){
 [v _pullup_RB6 `(v ~T0 @X0 1 ef ]
 {
 [e :U _pullup_RB6 ]
 [f ]
-"98
-[; ;setup.c: 98:     WPUBbits.WPUB6 = 1;
+"113
+[; ;setup.c: 113:     WPUBbits.WPUB6 = 1;
 [e = . . _WPUBbits 1 6 -> -> 1 `i `uc ]
-"99
-[; ;setup.c: 99: }
-[e :UE 157 ]
+"114
+[; ;setup.c: 114: }
+[e :UE 160 ]
 }
-"101
-[; ;setup.c: 101: void interrupt_onchange_RB7(void){
+"116
+[; ;setup.c: 116: void interrupt_onchange_RB7(void){
 [v _interrupt_onchange_RB7 `(v ~T0 @X0 1 ef ]
 {
 [e :U _interrupt_onchange_RB7 ]
 [f ]
-"102
-[; ;setup.c: 102:     IOCBbits.IOCB7 = 1;
+"117
+[; ;setup.c: 117:     IOCBbits.IOCB7 = 1;
 [e = . . _IOCBbits 1 7 -> -> 1 `i `uc ]
-"103
-[; ;setup.c: 103: }
-[e :UE 158 ]
+"118
+[; ;setup.c: 118: }
+[e :UE 161 ]
 }
-"105
-[; ;setup.c: 105: void interrupt_onchange_RB6(void){
+"120
+[; ;setup.c: 120: void interrupt_onchange_RB6(void){
 [v _interrupt_onchange_RB6 `(v ~T0 @X0 1 ef ]
 {
 [e :U _interrupt_onchange_RB6 ]
 [f ]
-"106
-[; ;setup.c: 106:     IOCBbits.IOCB6 = 1;
+"121
+[; ;setup.c: 121:     IOCBbits.IOCB6 = 1;
 [e = . . _IOCBbits 1 6 -> -> 1 `i `uc ]
-"107
-[; ;setup.c: 107: }
-[e :UE 159 ]
+"122
+[; ;setup.c: 122: }
+[e :UE 162 ]
 }

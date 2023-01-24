@@ -38,6 +38,6 @@ void ADC_on(void){
 }
 
 int ADC_conversion(void){
-    digital_value = ADRESH;
-    return digital_value;
+    digital_value = ADRESH; //tomar valor del ADRESH
+    return digital_value; //Devolver valor
 }

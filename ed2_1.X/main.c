@@ -28,52 +28,71 @@
 #include <stdint.h>
 #include "setup.h"
 #include "ADC_setup.h"
+#include "displays.h"
 #define _XTAL_FREQ 4000000
 
-int bandera=0; // variable para el antirrebote del botón de incrementar
-int num_adc;
+int bandera = 0; // variable para el antirrebote del botón de incrementar
+int num_adc = 0; // variable para guardar valor del ADC 
+int select = 0; // variable para controlar el muxeo de los displays
 
 void contador(void); //función del contador
-void displays(void); //función de multiplexeo de displays y alarma
 
 void main(void){
-    osc4MHz();
-    initiateports();
-    digital_low();
-    analog_12();
-    portA_digout();
-    portC_digout();
-    portD_digout();
-    pinRB7_digin();
-    pinRB6_digin();
-    pinRB0_digin();
-    global_interruptions_on();
-    peripheral_interruptions_on();
-    portB_interruptions_on();
-    ADC_interruptions_on();
-    pullup_RB7();
-    pullup_RB6();
-    interrupt_onchange_RB7();
-    interrupt_onchange_RB6();
-    ADC_clock_fosc8();
-    ADC_reference_default();
-    ADC_8bits();
-    ADC_AN12();
-    ADC_on();
+    osc4MHz(); //función que configura oscilador interno a 4MHz
+    digital_low(); //coloca pines como i/o digitales
+    analog_12(); //utilizar canal AN12 como entrada analógica
+    portA_digout(); //Puerto A como i/o digital
+    portC_digout(); //Puerto C como i/o digital
+    portD_digout(); //Puerto D como i/o digital
+    initiateports(); //función que limpia los puertos
+    pinRB7_digin(); //PinRB7 como entrada digital
+    pinRB6_digin(); //PinRB6 como entrada digital
+    pinRB0_digin(); //PinRB0 como entrada digital
+    portB_pullups(); //Activar pull-ups del puerto B
+    global_interruptions_on(); //Activar interrupciones globales
+    peripheral_interruptions_on(); //Activar interrupciones periféricas
+    Timer0_interruption_on(); //Activar interrupciones del Timer0
+    Timer0_source(); //Utilizar oscilador interno
+    Timer0_prescaler256(); //Utilizar prescaler de 256
+    portB_interruptions_on(); //Activar interrupciones del puerto B
+    ADC_interruptions_on(); //Activar interrupciones del ADC
+    pullup_RB7(); //Activar pull-up del pin RB7
+    pullup_RB6(); //Activar pull-up del pin RB6
+    interrupt_onchange_RB7(); //Activar interrupcion on-change para pin RB7
+    interrupt_onchange_RB6(); //Activar interrupcion on-change para pin RB6
+    ADC_clock_fosc8(); //Configurar f_osc/8 para el ADC
+    ADC_reference_default(); //Configurar referencia a 0 voltios
+    ADC_8bits(); //Utilizar ADC con 8 bits
+    ADC_AN12(); //Utilizar canal 12 para el ADC
+    ADC_on(); //Encender el ADC
+    TMR0 = 236; //Valor del Timer0 para 5ms de delay
     while(1){ //loop principal
         ADCON0bits.GO = 1; //iniciar conversión ADC
-        display_hex(); //función de displays      
+        display_hex(num_adc); //función de display
+        
     }
 }
 
 void __interrupt() isr(void){ //interrupciones
+    if (INTCONbits.T0IF == 1){ //revisar bandera de interrupcion del Timer0
+        INTCONbits.T0IF = 0; //limpiar bandera
+        TMR0 = 236; //cargar valor nuevamente al timer0
+        if (select == 0){ //revisar selector de muxeo
+            mux(select); //estar mostrando valores en display continuamente
+            select = 1;  //cambiar variable para el segundo display
+        }
+        if (select == 1){ //revisar selector de muxeo
+            mux(select); //estar mostrando valores en display continuamente
+            select = 0; //cambiar variable para el segundo display
+        } 
+    }
     if (INTCONbits.RBIF == 1){ //revisar bandera de interrupcion del puerto B
-        contador(); // llamar al contador
-        INTCONbits.RBIF = 0; //limpiar bandera  
+        INTCONbits.RBIF = 0; //limpiar bandera 
+        contador(); // llamar al contador 
     }
     if (PIR1bits.ADIF == 1){ //revisar bandera de interrupcion del conversor ADC
         PIR1bits.ADIF = 0; //limpiar bandera del conversor ADC
-        num_adc = ADC_conversion();
+        num_adc = ADC_conversion(); //Guardar valor ya convertido del ADC en una variable
     }
 }
    
@@ -82,14 +101,12 @@ void contador(void){
     if (PORTBbits.RB6 == 0){ //revisar si se presiono el botón de incrementar
         bandera = 1;} //activar bandera
     if (PORTBbits.RB6 == 1 && bandera == 1){ //revisar si se dejo de presionar el botón y la bandera está en 1
-        __delay_ms(10);
         PORTD++; //incrementar
         bandera = 0; // limpiar bandera
     }
     if (PORTBbits.RB7 == 0){ //revisar si se presiono el botón de decrementar
         bandera = 2;} //activar bandera
     if (PORTBbits.RB7 == 1 && bandera == 2){ //revisar si se dejo de presionar el botón y la bandera está en 1
-        __delay_ms(10);
         PORTD--; //decrementar el puerto
         bandera = 0; // limpiar bandera
     }

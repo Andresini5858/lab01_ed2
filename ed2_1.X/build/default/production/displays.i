@@ -2634,6 +2634,9 @@ extern __bank0 __bit __timeout;
 # 29 "E:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
 # 9 "displays.c" 2
 
+# 1 "E:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c90\\stdint.h" 1 3
+# 10 "displays.c" 2
+
 # 1 "./displays.h" 1
 
 
@@ -2647,6 +2650,8 @@ extern __bank0 __bit __timeout;
 unsigned int H1=0;
 unsigned int H2=0;
 int dis=0;
+int value;
+
 
 unsigned char nums[] = {
     0b00111111,
@@ -2667,30 +2672,33 @@ unsigned char nums[] = {
     0b01110001,
 };
 
-void display_hex(void);
-# 10 "displays.c" 2
+void display_hex(int value);
+void mux(int selector);
+# 11 "displays.c" 2
 
 
-void display_hex(void){
+
+void mux(int selector){
+        if (selector == 0){
+            PORTA = nums[H1];
+            PORTCbits.RC0 = 1;
+            PORTCbits.RC1 = 0;
+        }
+        if (selector == 1){
+            PORTA = nums[H2];
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 1;
+        }
+}
+
+void display_hex(int value){
     if (ADRESH >= PORTD){
-    PORTCbits.RC2 = 1;
+        PORTCbits.RC2 = 1;
     }
     else {
         PORTCbits.RC2 = 0; }
 
-    H1 = (ADRESH%16);
-    H2 = (ADRESH/16);
-
-    PORTA = nums[H1];
-    PORTCbits.RC0 = 1;
-    PORTCbits.RC1 = 0;
-
-    _delay((unsigned long)((5)*(_XTAL_FREQ/4000.0)));
-
-    PORTA = nums[H2];
-    PORTCbits.RC0 = 0;
-    PORTCbits.RC1 = 1;
-
-    _delay((unsigned long)((5)*(_XTAL_FREQ/4000.0)));
-
+    H1 = (value%16);
+    H2 = (value/16);
+# 48 "displays.c"
 }

@@ -2664,6 +2664,9 @@ void global_interruptions_off(void);
 void peripheral_interruptions_on(void);
 void portB_interruptions_on(void);
 void ADC_interruptions_on(void);
+void Timer0_interruption_on(void);
+void Timer0_source(void);
+void Timer0_prescaler256(void);
 void pullup_RB7(void);
 void pullup_RB6(void);
 void interrupt_onchange_RB7(void);
@@ -2749,6 +2752,21 @@ void portB_interruptions_on(void){
 
 void ADC_interruptions_on(void){
     PIE1bits.ADIE = 1;
+}
+
+void Timer0_interruption_on(void){
+    INTCONbits.T0IE = 1;
+}
+
+void Timer0_source(void){
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.PSA = 0;
+}
+
+void Timer0_prescaler256(void){
+    OPTION_REGbits.PS2 = 1;
+    OPTION_REGbits.PS1 = 1;
+    OPTION_REGbits.PS0 = 1;
 }
 
 void pullup_RB7(void){
