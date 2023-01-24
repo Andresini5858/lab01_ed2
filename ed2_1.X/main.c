@@ -2,7 +2,7 @@
  * File:   main.c
  * Author: Andrés Lemus
  * Laboratorio 1
- * Created on January 19, 2023, 12:47 AM
+ * Created on January 19, 2023, 12:47 PM
  */
 // PIC16F887 Configuration Bit Settings
 
@@ -26,44 +26,43 @@
 
 #include <xc.h>
 #include <stdint.h>
-
+#include "setup.h"
+#include "ADC_setup.h"
 #define _XTAL_FREQ 4000000
 
-char bandera = 0; //variable para el antirrebotes
-unsigned char dis = 0; //variable para guardar el valor del ADRESH
-unsigned int H1=0; //variable para guardar las "unidades" del valor hexadecimal
-unsigned int H2=0; //variable para guardar las "decenas" del valor hexadecimal
-unsigned char nums[] = { //arreglo para valores del display de 7 segementos
-    0b00111111, //0
-    0b00000110, //1
-    0b01011011, //2
-    0b01001111, //3
-    0b01100110, //4
-    0b01101101, //5 
-    0b01111101, //6
-    0b00000111, //7
-    0b01111111, //8
-    0b01100111, //9
-    0b01110111, //A
-    0b01111100, //B
-    0b00111001, //C
-    0b01011110, //D
-    0b01111001, //E
-    0b01110001, //F
-};
+int bandera=0; // variable para el antirrebote del botón de incrementar
+int num_adc;
 
-void setup(void);
-void setupADC(void); //función de configuración del ADC
 void contador(void); //función del contador
 void displays(void); //función de multiplexeo de displays y alarma
-void ADC(void); //función de interrupción del ADC
 
 void main(void){
-    setup();
-    setupADC();
-    while(1){
-        if (ADCON0bits.GO == 0){
-            ADCON0bits.GO = 1;}
+    osc4MHz();
+    initiateports();
+    digital_low();
+    analog_12();
+    portA_digout();
+    portC_digout();
+    portD_digout();
+    pinRB7_digin();
+    pinRB6_digin();
+    pinRB0_digin();
+    global_interruptions_on();
+    peripheral_interruptions_on();
+    portB_interruptions_on();
+    ADC_interruptions_on();
+    pullup_RB7();
+    pullup_RB6();
+    interrupt_onchange_RB7();
+    interrupt_onchange_RB6();
+    ADC_clock_fosc8();
+    ADC_reference_default();
+    ADC_8bits();
+    ADC_AN12();
+    ADC_on();
+    while(1){ //loop principal
+        ADCON0bits.GO = 1; //iniciar conversión ADC
+        display_hex(); //función de displays      
     }
 }
 
@@ -72,102 +71,26 @@ void __interrupt() isr(void){ //interrupciones
         contador(); // llamar al contador
         INTCONbits.RBIF = 0; //limpiar bandera  
     }
-    
-    if (PIR1bits.ADIF == 1){
+    if (PIR1bits.ADIF == 1){ //revisar bandera de interrupcion del conversor ADC
         PIR1bits.ADIF = 0; //limpiar bandera del conversor ADC
-        ADC();
+        num_adc = ADC_conversion();
     }
 }
+   
 
 void contador(void){ 
     if (PORTBbits.RB6 == 0){ //revisar si se presiono el botón de incrementar
         bandera = 1;} //activar bandera
     if (PORTBbits.RB6 == 1 && bandera == 1){ //revisar si se dejo de presionar el botón y la bandera está en 1
+        __delay_ms(10);
         PORTD++; //incrementar
         bandera = 0; // limpiar bandera
     }
     if (PORTBbits.RB7 == 0){ //revisar si se presiono el botón de decrementar
         bandera = 2;} //activar bandera
     if (PORTBbits.RB7 == 1 && bandera == 2){ //revisar si se dejo de presionar el botón y la bandera está en 1
+        __delay_ms(10);
         PORTD--; //decrementar el puerto
         bandera = 0; // limpiar bandera
     }
-}
-
-void ADC(void){
-        dis = ADRESH; //guardar variables del ADRESH 
-        __delay_ms(10); // delay de 10 ms
-}
-
-void displays(void){ // alarma (POST-LAB)
-    if (dis >= PORTD){ //revisar si el valor del ADRESH es mayor al Puerto D
-        PORTCbits.RC2 = 1; //encender alarma
-    }
-    else { //revisar si el valor del ADRESH es mayor al Puerto D
-        PORTCbits.RC2 = 0;    } // apagar alarma
-    
-    H1 = (dis%16); //convertir el valor de ADRESH a hexadecimal
-    H2 = (dis/16); //convertir el valor de ADRESH a hexadecimal
-    
-    PORTA = nums[H1]; //mostrar unidades en el puerto A (display)
-    PORTCbits.RC0 = 1; //multiplexeo
-    PORTCbits.RC1 = 0;
-    
-    __delay_ms(5); //delay de 5 ms
-    
-    PORTA = nums[H2]; //mostrar decenas en el puerto A (display)
-    PORTCbits.RC0 = 0; //multiplexeo
-    PORTCbits.RC1 = 1;
-    
-    __delay_ms(5); //delay de 5 ms
-}    
-
-void setup(void){
-    ANSEL = 0; //pines como digitales
-    ANSELH = 0b00000100; //pin RB1/AN10 como entrada analógica
-    
-    TRISA = 0; //Puerto A como salidas digitales
-    TRISBbits.TRISB7 = 1; //Pin B6 como entrada
-    TRISBbits.TRISB6 = 1; //Pin B7 como entrada
-    TRISC = 0; //Puerto C como salidas digitales
-    TRISD = 0; //Puerto D como salidas digitales
-    
-    PORTA = 0; //Limpiar puerto A
-    PORTB = 0; //Limpiar Puerto B
-    PORTC = 0; //Limpiar puerto C
-    PORTD = 0; //Limpiar puerto D
-    
-    OPTION_REGbits.nRBPU = 0; //Activar pullups del puerto B
-    INTCONbits.GIE = 1; //Activar interrupciones globales
-    INTCONbits.PEIE = 1; //Activar interrupciones periféricas
-    INTCONbits.RBIE = 1; //Activar interrupciones puerto B
-    PIE1bits.ADIE = 1; // Habiliar interrupcion del conversor ADC
-    
-    WPUBbits.WPUB7 = 1; // Activar pullup puerto b7
-    WPUBbits.WPUB6 = 1; // Activar pullup puerto b6
-    IOCBbits.IOCB7 = 1; //activar interrupt on-change b7
-    IOCBbits.IOCB6 = 1; //activar interrupt on-change b6
-  
-    OSCCONbits.IRCF0 = 0; //Oscilador a 4MHz
-    OSCCONbits.IRCF1 = 1;
-    OSCCONbits.IRCF2 = 1;
-    OSCCONbits.SCS = 1; //Oscialdor interno
-}
-
-void setupADC(void){
-    ADCON0bits.ADCS1 = 0; // Fosc/ 8        
-    ADCON0bits.ADCS0 = 1;      
-    
-    ADCON1bits.VCFG1 = 0; // Referencia VSS (0 Volts)
-    ADCON1bits.VCFG0 = 0; // Referencia VDD (5 Volts)
-    
-    ADCON1bits.ADFM = 0;  // Justificado hacia izquierda
-    
-    ADCON0bits.CHS3 = 1; // Canal AN12
-    ADCON0bits.CHS2 = 1;
-    ADCON0bits.CHS1 = 0;
-    ADCON0bits.CHS0 = 0;        
-    
-    ADCON0bits.ADON = 1; // Habilitamos el ADC
-    __delay_us(100); //delay de 100 us
 }

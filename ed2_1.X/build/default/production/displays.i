@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "displays.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,22 +6,13 @@
 # 1 "<built-in>" 2
 # 1 "E:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 12 "main.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
+# 1 "displays.c" 2
 
 
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
+
+
+
+
 
 
 # 1 "E:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 1 3
@@ -2641,127 +2632,65 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "E:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
-# 27 "main.c" 2
+# 9 "displays.c" 2
 
-# 1 "E:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c90\\stdint.h" 1 3
-# 28 "main.c" 2
-
-# 1 "./setup.h" 1
-
-
-
-
-# 1 "E:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c90\\stdint.h" 1 3
-# 5 "./setup.h" 2
-
-
-void osc4MHz(void);
-void initiateports(void);
-void digital_low(void);
-void digital_high(void);
-void analog_12(void);
-void portA_digout(void);
-void portB_digout(void);
-void portC_digout(void);
-void portD_digout(void);
-void pinRB7_digin(void);
-void pinRB6_digin(void);
-void pinRB0_digin(void);
-void portB_pullups(void);
-void global_interruptions_on(void);
-void global_interruptions_off(void);
-void peripheral_interruptions_on(void);
-void portB_interruptions_on(void);
-void ADC_interruptions_on(void);
-void pullup_RB7(void);
-void pullup_RB6(void);
-void interrupt_onchange_RB7(void);
-void interrupt_onchange_RB6(void);
-# 29 "main.c" 2
-
-# 1 "./ADC_setup.h" 1
+# 1 "./displays.h" 1
 
 
 
 
 
 # 1 "E:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c90\\stdint.h" 1 3
-# 6 "./ADC_setup.h" 2
+# 6 "./displays.h" 2
 
 
-int digital_value;
+unsigned int H1=0;
+unsigned int H2=0;
+int dis=0;
 
-void ADC_clock_fosc8(void);
-void ADC_reference_default(void);
-void ADC_8bits(void);
-void ADC_AN12(void);
-void ADC_on(void);
-int ADC_conversion(void);
-# 30 "main.c" 2
+unsigned char nums[] = {
+    0b00111111,
+    0b00000110,
+    0b01011011,
+    0b01001111,
+    0b01100110,
+    0b01101101,
+    0b01111101,
+    0b00000111,
+    0b01111111,
+    0b01100111,
+    0b01110111,
+    0b01111100,
+    0b00111001,
+    0b01011110,
+    0b01111001,
+    0b01110001,
+};
+
+void display_hex(void);
+# 10 "displays.c" 2
 
 
-
-int bandera=0;
-int num_adc;
-
-void contador(void);
-void displays(void);
-
-void main(void){
-    osc4MHz();
-    initiateports();
-    digital_low();
-    analog_12();
-    portA_digout();
-    portC_digout();
-    portD_digout();
-    pinRB7_digin();
-    pinRB6_digin();
-    pinRB0_digin();
-    global_interruptions_on();
-    peripheral_interruptions_on();
-    portB_interruptions_on();
-    ADC_interruptions_on();
-    pullup_RB7();
-    pullup_RB6();
-    interrupt_onchange_RB7();
-    interrupt_onchange_RB6();
-    ADC_clock_fosc8();
-    ADC_reference_default();
-    ADC_8bits();
-    ADC_AN12();
-    ADC_on();
-    while(1){
-        ADCON0bits.GO = 1;
-        display_hex();
+void display_hex(void){
+    if (ADRESH >= PORTD){
+    PORTCbits.RC2 = 1;
     }
-}
+    else {
+        PORTCbits.RC2 = 0; }
 
-void __attribute__((picinterrupt(("")))) isr(void){
-    if (INTCONbits.RBIF == 1){
-        contador();
-        INTCONbits.RBIF = 0;
-    }
-    if (PIR1bits.ADIF == 1){
-        PIR1bits.ADIF = 0;
-        num_adc = ADC_conversion();
-    }
-}
+    H1 = (ADRESH%16);
+    H2 = (ADRESH/16);
 
+    PORTA = nums[H1];
+    PORTCbits.RC0 = 1;
+    PORTCbits.RC1 = 0;
 
-void contador(void){
-    if (PORTBbits.RB6 == 0){
-        bandera = 1;}
-    if (PORTBbits.RB6 == 1 && bandera == 1){
-        _delay((unsigned long)((10)*(4000000/4000.0)));
-        PORTD++;
-        bandera = 0;
-    }
-    if (PORTBbits.RB7 == 0){
-        bandera = 2;}
-    if (PORTBbits.RB7 == 1 && bandera == 2){
-        _delay((unsigned long)((10)*(4000000/4000.0)));
-        PORTD--;
-        bandera = 0;
-    }
+    _delay((unsigned long)((5)*(_XTAL_FREQ/4000.0)));
+
+    PORTA = nums[H2];
+    PORTCbits.RC0 = 0;
+    PORTCbits.RC1 = 1;
+
+    _delay((unsigned long)((5)*(_XTAL_FREQ/4000.0)));
+
 }

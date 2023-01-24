@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "setup.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,22 +6,13 @@
 # 1 "<built-in>" 2
 # 1 "E:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 12 "main.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
+# 1 "setup.c" 2
 
 
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
+
+
+
+
 
 
 # 1 "E:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 1 3
@@ -2641,10 +2632,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "E:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
-# 27 "main.c" 2
+# 9 "setup.c" 2
 
 # 1 "E:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c90\\stdint.h" 1 3
-# 28 "main.c" 2
+# 10 "setup.c" 2
 
 # 1 "./setup.h" 1
 
@@ -2677,91 +2668,101 @@ void pullup_RB7(void);
 void pullup_RB6(void);
 void interrupt_onchange_RB7(void);
 void interrupt_onchange_RB6(void);
-# 29 "main.c" 2
-
-# 1 "./ADC_setup.h" 1
+# 11 "setup.c" 2
 
 
 
-
-
-# 1 "E:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c90\\stdint.h" 1 3
-# 6 "./ADC_setup.h" 2
-
-
-int digital_value;
-
-void ADC_clock_fosc8(void);
-void ADC_reference_default(void);
-void ADC_8bits(void);
-void ADC_AN12(void);
-void ADC_on(void);
-int ADC_conversion(void);
-# 30 "main.c" 2
-
-
-
-int bandera=0;
-int num_adc;
-
-void contador(void);
-void displays(void);
-
-void main(void){
-    osc4MHz();
-    initiateports();
-    digital_low();
-    analog_12();
-    portA_digout();
-    portC_digout();
-    portD_digout();
-    pinRB7_digin();
-    pinRB6_digin();
-    pinRB0_digin();
-    global_interruptions_on();
-    peripheral_interruptions_on();
-    portB_interruptions_on();
-    ADC_interruptions_on();
-    pullup_RB7();
-    pullup_RB6();
-    interrupt_onchange_RB7();
-    interrupt_onchange_RB6();
-    ADC_clock_fosc8();
-    ADC_reference_default();
-    ADC_8bits();
-    ADC_AN12();
-    ADC_on();
-    while(1){
-        ADCON0bits.GO = 1;
-        display_hex();
-    }
+void osc4MHz(void){
+    OSCCONbits.IRCF2 = 1;
+    OSCCONbits.IRCF1 = 1;
+    OSCCONbits.IRCF0 = 0;
+    OSCCONbits.SCS = 1;
 }
 
-void __attribute__((picinterrupt(("")))) isr(void){
-    if (INTCONbits.RBIF == 1){
-        contador();
-        INTCONbits.RBIF = 0;
-    }
-    if (PIR1bits.ADIF == 1){
-        PIR1bits.ADIF = 0;
-        num_adc = ADC_conversion();
-    }
+void initiateports(void){
+    PORTA = 0;
+    PORTB = 0;
+    PORTC = 0;
+    PORTD = 0;
+    PORTE = 0;
 }
 
+void digital_low(void){
+    ANSEL = 0;
+}
 
-void contador(void){
-    if (PORTBbits.RB6 == 0){
-        bandera = 1;}
-    if (PORTBbits.RB6 == 1 && bandera == 1){
-        _delay((unsigned long)((10)*(4000000/4000.0)));
-        PORTD++;
-        bandera = 0;
-    }
-    if (PORTBbits.RB7 == 0){
-        bandera = 2;}
-    if (PORTBbits.RB7 == 1 && bandera == 2){
-        _delay((unsigned long)((10)*(4000000/4000.0)));
-        PORTD--;
-        bandera = 0;
-    }
+void digital_high(void){
+    ANSELH = 0;
+}
+
+void analog_12(void){
+    ANSELH = 0b00010000;
+}
+
+void portA_digout(void){
+    TRISA = 0;
+}
+
+void portB_digout(void){
+    TRISB = 0;
+}
+
+void portC_digout(void){
+    TRISC = 0;
+}
+
+void portD_digout(void){
+    TRISD = 0;
+}
+
+void pinRB7_digin(void){
+    TRISBbits.TRISB7 = 1;
+}
+
+void pinRB6_digin(void){
+    TRISBbits.TRISB6 = 1;
+}
+
+void pinRB0_digin(void){
+    TRISBbits.TRISB0 = 1;
+}
+
+void portB_pullups(void){
+    OPTION_REGbits.nRBPU = 0;
+}
+
+void global_interruptions_on(void){
+    INTCONbits.GIE = 1;
+}
+
+void global_interruptions_off(void){
+    INTCONbits.GIE = 0;
+}
+
+void peripheral_interruptions_on(void){
+    INTCONbits.PEIE = 1;
+}
+
+void portB_interruptions_on(void){
+    INTCONbits.RBIE = 1;
+}
+
+void ADC_interruptions_on(void){
+    PIE1bits.ADIE = 1;
+}
+
+void pullup_RB7(void){
+    WPUBbits.WPUB7 = 1;
+}
+
+void pullup_RB6(void){
+    WPUBbits.WPUB6 = 1;
+}
+
+void interrupt_onchange_RB7(void){
+    IOCBbits.IOCB7 = 1;
+}
+
+void interrupt_onchange_RB6(void){
+    IOCBbits.IOCB6 = 1;
 }
