@@ -31,9 +31,9 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "40 C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"76
+"75
 [v _isr isr `II(v  1 e 1 0 ]
-"100
+"99
 [v _contador contador `(v  1 e 1 0 ]
 "14 C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\setup.c
 [v _osc4MHz osc4MHz `(v  1 e 1 0 ]
@@ -285,7 +285,7 @@
 "40
 [v _main main `(v  1 e 1 0 ]
 {
-"74
+"73
 } 0
 "108 C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\setup.c
 [v _pullup_RB7 pullup_RB7 `(v  1 e 1 0 ]
@@ -441,10 +441,10 @@
 {
 "26
 } 0
-"76 C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+"75 C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"97
+"96
 } 0
 "14 C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\displays.c
 [v _mux mux `(v  1 e 1 0 ]
@@ -452,10 +452,10 @@
 [v mux@selector selector `i  1 p 2 0 ]
 "25
 } 0
-"100 C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+"99 C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
 [v _contador contador `(v  1 e 1 0 ]
 {
-"113
+"112
 } 0
 "40 C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\ADC_setup.c
 [v _ADC_conversion ADC_conversion `(i  1 e 2 0 ]

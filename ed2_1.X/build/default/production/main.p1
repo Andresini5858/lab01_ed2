@@ -3,9 +3,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7 ./setup.h
 [; ;./setup.h: 7: void osc4MHz(void);
 [v _osc4MHz `(v ~T0 @X0 0 ef ]
-"8
-[; ;./setup.h: 8: void initiateports(void);
-[v _initiateports `(v ~T0 @X0 0 ef ]
 "9
 [; ;./setup.h: 9: void digital_low(void);
 [v _digital_low `(v ~T0 @X0 0 ef ]
@@ -21,6 +18,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15
 [; ;./setup.h: 15: void portD_digout(void);
 [v _portD_digout `(v ~T0 @X0 0 ef ]
+"8
+[; ;./setup.h: 8: void initiateports(void);
+[v _initiateports `(v ~T0 @X0 0 ef ]
 "16
 [; ;./setup.h: 16: void pinRB7_digin(void);
 [v _pinRB7_digin `(v ~T0 @X0 0 ef ]
@@ -495,23 +495,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 41:     osc4MHz();
 [e ( _osc4MHz ..  ]
 "42
-[; ;main.c: 42:     initiateports();
-[e ( _initiateports ..  ]
-"43
-[; ;main.c: 43:     digital_low();
+[; ;main.c: 42:     digital_low();
 [e ( _digital_low ..  ]
-"44
-[; ;main.c: 44:     analog_12();
+"43
+[; ;main.c: 43:     analog_12();
 [e ( _analog_12 ..  ]
-"45
-[; ;main.c: 45:     portA_digout();
+"44
+[; ;main.c: 44:     portA_digout();
 [e ( _portA_digout ..  ]
-"46
-[; ;main.c: 46:     portC_digout();
+"45
+[; ;main.c: 45:     portC_digout();
 [e ( _portC_digout ..  ]
-"47
-[; ;main.c: 47:     portD_digout();
+"46
+[; ;main.c: 46:     portD_digout();
 [e ( _portD_digout ..  ]
+"47
+[; ;main.c: 47:     initiateports();
+[e ( _initiateports ..  ]
 "48
 [; ;main.c: 48:     pinRB7_digin();
 [e ( _pinRB7_digin ..  ]
@@ -573,8 +573,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 67:     ADC_on();
 [e ( _ADC_on ..  ]
 "68
-[; ;main.c: 68:     TMR0 = 236;
-[e = _TMR0 -> -> 236 `i `uc ]
+[; ;main.c: 68:     TMR0 = 255;
+[e = _TMR0 -> -> 255 `i `uc ]
 "69
 [; ;main.c: 69:     while(1){
 [e :U 140 ]
@@ -585,150 +585,150 @@ Version 4.0 HI-TECH Software Intermediate Code
 "71
 [; ;main.c: 71:         display_hex(num_adc);
 [e ( _display_hex (1 _num_adc ]
-"73
-[; ;main.c: 73:     }
+"72
+[; ;main.c: 72:     }
 }
 [e :U 139 ]
 [e $U 140  ]
 [e :U 141 ]
-"74
-[; ;main.c: 74: }
+"73
+[; ;main.c: 73: }
 [e :UE 138 ]
 }
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"76
-[; ;main.c: 76: void __attribute__((picinterrupt(("")))) isr(void){
+"75
+[; ;main.c: 75: void __attribute__((picinterrupt(("")))) isr(void){
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"77
-[; ;main.c: 77:     if (INTCONbits.T0IF == 1){
+"76
+[; ;main.c: 76:     if (INTCONbits.T0IF == 1){
 [e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 143  ]
 {
-"78
-[; ;main.c: 78:         INTCONbits.T0IF = 0;
+"77
+[; ;main.c: 77:         INTCONbits.T0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"78
+[; ;main.c: 78:         TMR0 = 255;
+[e = _TMR0 -> -> 255 `i `uc ]
 "79
-[; ;main.c: 79:         TMR0 = 236;
-[e = _TMR0 -> -> 236 `i `uc ]
-"80
-[; ;main.c: 80:         if (select == 0){
+[; ;main.c: 79:         if (select == 0){
 [e $ ! == _select -> 0 `i 144  ]
 {
-"81
-[; ;main.c: 81:             mux(select);
+"80
+[; ;main.c: 80:             mux(select);
 [e ( _mux (1 _select ]
-"82
-[; ;main.c: 82:             select = 1;
+"81
+[; ;main.c: 81:             select = 1;
 [e = _select -> 1 `i ]
-"83
-[; ;main.c: 83:         }
+"82
+[; ;main.c: 82:         }
 }
 [e :U 144 ]
-"84
-[; ;main.c: 84:         if (select == 1){
+"83
+[; ;main.c: 83:         if (select == 1){
 [e $ ! == _select -> 1 `i 145  ]
 {
-"85
-[; ;main.c: 85:             mux(select);
+"84
+[; ;main.c: 84:             mux(select);
 [e ( _mux (1 _select ]
-"86
-[; ;main.c: 86:             select = 0;
+"85
+[; ;main.c: 85:             select = 0;
 [e = _select -> 0 `i ]
-"87
-[; ;main.c: 87:         }
+"86
+[; ;main.c: 86:         }
 }
 [e :U 145 ]
-"88
-[; ;main.c: 88:     }
+"87
+[; ;main.c: 87:     }
 }
 [e :U 143 ]
-"89
-[; ;main.c: 89:     if (INTCONbits.RBIF == 1){
+"88
+[; ;main.c: 88:     if (INTCONbits.RBIF == 1){
 [e $ ! == -> . . _INTCONbits 0 0 `i -> 1 `i 146  ]
 {
-"90
-[; ;main.c: 90:         INTCONbits.RBIF = 0;
+"89
+[; ;main.c: 89:         INTCONbits.RBIF = 0;
 [e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
-"91
-[; ;main.c: 91:         contador();
+"90
+[; ;main.c: 90:         contador();
 [e ( _contador ..  ]
-"92
-[; ;main.c: 92:     }
+"91
+[; ;main.c: 91:     }
 }
 [e :U 146 ]
-"93
-[; ;main.c: 93:     if (PIR1bits.ADIF == 1){
+"92
+[; ;main.c: 92:     if (PIR1bits.ADIF == 1){
 [e $ ! == -> . . _PIR1bits 0 6 `i -> 1 `i 147  ]
 {
-"94
-[; ;main.c: 94:         PIR1bits.ADIF = 0;
+"93
+[; ;main.c: 93:         PIR1bits.ADIF = 0;
 [e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-"95
-[; ;main.c: 95:         num_adc = ADC_conversion();
+"94
+[; ;main.c: 94:         num_adc = ADC_conversion();
 [e = _num_adc ( _ADC_conversion ..  ]
-"96
-[; ;main.c: 96:     }
+"95
+[; ;main.c: 95:     }
 }
 [e :U 147 ]
-"97
-[; ;main.c: 97: }
+"96
+[; ;main.c: 96: }
 [e :UE 142 ]
 }
-"100
-[; ;main.c: 100: void contador(void){
+"99
+[; ;main.c: 99: void contador(void){
 [v _contador `(v ~T0 @X0 1 ef ]
 {
 [e :U _contador ]
 [f ]
-"101
-[; ;main.c: 101:     if (PORTBbits.RB6 == 0){
+"100
+[; ;main.c: 100:     if (PORTBbits.RB6 == 0){
 [e $ ! == -> . . _PORTBbits 0 6 `i -> 0 `i 149  ]
 {
-"102
-[; ;main.c: 102:         bandera = 1;}
+"101
+[; ;main.c: 101:         bandera = 1;}
 [e = _bandera -> 1 `i ]
 }
 [e :U 149 ]
-"103
-[; ;main.c: 103:     if (PORTBbits.RB6 == 1 && bandera == 1){
+"102
+[; ;main.c: 102:     if (PORTBbits.RB6 == 1 && bandera == 1){
 [e $ ! && == -> . . _PORTBbits 0 6 `i -> 1 `i == _bandera -> 1 `i 150  ]
 {
-"104
-[; ;main.c: 104:         PORTD++;
+"103
+[; ;main.c: 103:         PORTD++;
 [e ++ _PORTD -> -> 1 `i `Vuc ]
-"105
-[; ;main.c: 105:         bandera = 0;
+"104
+[; ;main.c: 104:         bandera = 0;
 [e = _bandera -> 0 `i ]
-"106
-[; ;main.c: 106:     }
+"105
+[; ;main.c: 105:     }
 }
 [e :U 150 ]
-"107
-[; ;main.c: 107:     if (PORTBbits.RB7 == 0){
+"106
+[; ;main.c: 106:     if (PORTBbits.RB7 == 0){
 [e $ ! == -> . . _PORTBbits 0 7 `i -> 0 `i 151  ]
 {
-"108
-[; ;main.c: 108:         bandera = 2;}
+"107
+[; ;main.c: 107:         bandera = 2;}
 [e = _bandera -> 2 `i ]
 }
 [e :U 151 ]
-"109
-[; ;main.c: 109:     if (PORTBbits.RB7 == 1 && bandera == 2){
+"108
+[; ;main.c: 108:     if (PORTBbits.RB7 == 1 && bandera == 2){
 [e $ ! && == -> . . _PORTBbits 0 7 `i -> 1 `i == _bandera -> 2 `i 152  ]
 {
-"110
-[; ;main.c: 110:         PORTD--;
+"109
+[; ;main.c: 109:         PORTD--;
 [e -- _PORTD -> -> 1 `i `Vuc ]
-"111
-[; ;main.c: 111:         bandera = 0;
+"110
+[; ;main.c: 110:         bandera = 0;
 [e = _bandera -> 0 `i ]
-"112
-[; ;main.c: 112:     }
+"111
+[; ;main.c: 111:     }
 }
 [e :U 152 ]
-"113
-[; ;main.c: 113: }
+"112
+[; ;main.c: 112: }
 [e :UE 148 ]
 }

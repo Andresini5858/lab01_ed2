@@ -2751,12 +2751,12 @@ void contador(void);
 
 void main(void){
     osc4MHz();
-    initiateports();
     digital_low();
     analog_12();
     portA_digout();
     portC_digout();
     portD_digout();
+    initiateports();
     pinRB7_digin();
     pinRB6_digin();
     pinRB0_digin();
@@ -2777,18 +2777,17 @@ void main(void){
     ADC_8bits();
     ADC_AN12();
     ADC_on();
-    TMR0 = 236;
+    TMR0 = 255;
     while(1){
         ADCON0bits.GO = 1;
         display_hex(num_adc);
-
     }
 }
 
 void __attribute__((picinterrupt(("")))) isr(void){
     if (INTCONbits.T0IF == 1){
         INTCONbits.T0IF = 0;
-        TMR0 = 236;
+        TMR0 = 255;
         if (select == 0){
             mux(select);
             select = 1;

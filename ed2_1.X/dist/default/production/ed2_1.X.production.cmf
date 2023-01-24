@@ -57,7 +57,7 @@ idataBANK0 CODE 0 214 214 10 2 1
 dataBANK0 BANK0 1 20 20 10 1 1
 bssCOMMON COMMON 1 77 77 6 1 1
 config CONFIG 4 2007 2007 2 2 1
-$C:\Users\lemus\AppData\Local\Temp\xcAse28.o
+$C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
 idloc IDLOC 5 2000 2000 4 2 1
 reset_vec CODE 0 0 0 3 2 1
 end_init CODE 0 E E 3 2 1
@@ -106,54 +106,54 @@ STRING 2AD-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\ed2_1.X.production.o
-11 cinit CODE >1007:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-11 cinit CODE >1010:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-11 cinit CODE >1081:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-12 cinit CODE >1082:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-13 cinit CODE >1083:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-14 cinit CODE >1084:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-15 cinit CODE >1085:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-16 cinit CODE >1086:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-17 cinit CODE >1087:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-18 cinit CODE >1088:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-19 cinit CODE >1089:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-1A cinit CODE >1090:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-1F cinit CODE >1094:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-20 cinit CODE >1095:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-21 cinit CODE >1096:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-22 cinit CODE >1097:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-23 cinit CODE >1098:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-24 cinit CODE >1099:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-25 cinit CODE >1100:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-26 cinit CODE >1101:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-27 cinit CODE >1102:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-28 cinit CODE >1103:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-29 cinit CODE >1106:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-2A cinit CODE >1107:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-2B cinit CODE >1108:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-2C cinit CODE >1109:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-2D cinit CODE >1110:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-2E cinit CODE >1111:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-2F cinit CODE >1117:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-2F cinit CODE >1119:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-30 cinit CODE >1120:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-4 intentry CODE >76:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+11 cinit CODE >1007:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+11 cinit CODE >1010:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+11 cinit CODE >1081:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+12 cinit CODE >1082:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+13 cinit CODE >1083:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+14 cinit CODE >1084:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+15 cinit CODE >1085:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+16 cinit CODE >1086:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+17 cinit CODE >1087:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+18 cinit CODE >1088:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+19 cinit CODE >1089:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+1A cinit CODE >1090:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+1F cinit CODE >1094:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+20 cinit CODE >1095:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+21 cinit CODE >1096:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+22 cinit CODE >1097:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+23 cinit CODE >1098:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+24 cinit CODE >1099:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+25 cinit CODE >1100:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+26 cinit CODE >1101:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+27 cinit CODE >1102:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+28 cinit CODE >1103:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+29 cinit CODE >1106:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+2A cinit CODE >1107:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+2B cinit CODE >1108:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+2C cinit CODE >1109:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+2D cinit CODE >1110:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+2E cinit CODE >1111:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+2F cinit CODE >1117:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+2F cinit CODE >1119:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+30 cinit CODE >1120:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+4 intentry CODE >75:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
 224 text33 CODE >40:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\ADC_setup.c
 224 text33 CODE >41:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\ADC_setup.c
 22D text33 CODE >42:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\ADC_setup.c
 231 text33 CODE >43:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\ADC_setup.c
+189 text32 CODE >99:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
 189 text32 CODE >100:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-189 text32 CODE >101:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-18F text32 CODE >102:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-193 text32 CODE >103:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-19D text32 CODE >104:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-1A1 text32 CODE >105:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-1A3 text32 CODE >107:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-1A7 text32 CODE >108:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-1AB text32 CODE >109:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-1B6 text32 CODE >110:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-1B8 text32 CODE >111:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-1BA text32 CODE >113:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+18F text32 CODE >101:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+193 text32 CODE >102:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+19D text32 CODE >103:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+1A1 text32 CODE >104:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+1A3 text32 CODE >106:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+1A7 text32 CODE >107:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+1AB text32 CODE >108:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+1B6 text32 CODE >109:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+1B8 text32 CODE >110:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+1BA text32 CODE >112:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
 1E0 text31 CODE >14:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\displays.c
 1E0 text31 CODE >15:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\displays.c
 1E6 text31 CODE >16:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\displays.c
@@ -164,23 +164,23 @@ $dist/default/production\ed2_1.X.production.o
 1FE text31 CODE >22:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\displays.c
 1FF text31 CODE >23:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\displays.c
 200 text31 CODE >25:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\displays.c
+137 text30 CODE >75:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
 137 text30 CODE >76:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-137 text30 CODE >77:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-13B text30 CODE >78:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-13C text30 CODE >79:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-140 text30 CODE >80:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-146 text30 CODE >81:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-14F text30 CODE >82:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-153 text30 CODE >84:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-159 text30 CODE >85:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-162 text30 CODE >86:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-164 text30 CODE >89:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-168 text30 CODE >90:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-169 text30 CODE >91:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-16E text30 CODE >93:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-174 text30 CODE >94:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-175 text30 CODE >95:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-180 text30 CODE >97:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+13B text30 CODE >77:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+13C text30 CODE >78:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+140 text30 CODE >79:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+146 text30 CODE >80:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+14F text30 CODE >81:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+153 text30 CODE >83:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+159 text30 CODE >84:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+162 text30 CODE >85:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+164 text30 CODE >88:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+168 text30 CODE >89:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+169 text30 CODE >90:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+16E text30 CODE >92:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+174 text30 CODE >93:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+175 text30 CODE >94:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
+180 text30 CODE >96:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
 2A1 text29 CODE >24:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\ADC_setup.c
 2A1 text29 CODE >25:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\ADC_setup.c
 2A4 text29 CODE >26:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\ADC_setup.c
@@ -356,23 +356,23 @@ B5 maintext CODE >67:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
 BA maintext CODE >68:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
 BE maintext CODE >70:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
 C1 maintext CODE >71:C:\Users\lemus\Documents\GitHub\lab01_ed2\ed2_1.X\main.c
-201 inittext CODE >1055:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-201 inittext CODE >1056:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-202 inittext CODE >1057:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-203 inittext CODE >1058:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-204 inittext CODE >1059:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-205 inittext CODE >1066:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-205 inittext CODE >1067:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-20A inittext CODE >1068:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-20B inittext CODE >1069:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-20C inittext CODE >1070:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-20D inittext CODE >1071:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-20E inittext CODE >1072:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-20F inittext CODE >1073:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-210 inittext CODE >1074:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-211 inittext CODE >1075:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-212 inittext CODE >1076:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
-213 inittext CODE >1077:C:\Users\lemus\AppData\Local\Temp\xcAse28.s
+201 inittext CODE >1055:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+201 inittext CODE >1056:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+202 inittext CODE >1057:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+203 inittext CODE >1058:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+204 inittext CODE >1059:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+205 inittext CODE >1066:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+205 inittext CODE >1067:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+20A inittext CODE >1068:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+20B inittext CODE >1069:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+20C inittext CODE >1070:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+20D inittext CODE >1071:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+20E inittext CODE >1072:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+20F inittext CODE >1073:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+210 inittext CODE >1074:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+211 inittext CODE >1075:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+212 inittext CODE >1076:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
+213 inittext CODE >1077:C:\Users\lemus\AppData\Local\Temp\xcAsfs0.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -402,12 +402,12 @@ _H1 43 0 BANK0 1 bssBANK0 dist/default/production\ed2_1.X.production.o
 _H2 41 0 BANK0 1 bssBANK0 dist/default/production\ed2_1.X.production.o
 __Hstrings 0 0 ABS 0 strings -
 _TMR0 1 0 ABS 0 - dist/default/production\ed2_1.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\lemus\AppData\Local\Temp\xcAse28.o
+___sp 0 0 STACK 2 stack C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
 _main 66 0 CODE 0 maintext dist/default/production\ed2_1.X.production.o
 _nums 20 0 BANK0 1 dataBANK0 dist/default/production\ed2_1.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\ed2_1.X.production.o
 _ADC_interruptions_on 53A 0 CODE 0 text26 dist/default/production\ed2_1.X.production.o
-start 1C 0 CODE 0 init C:\Users\lemus\AppData\Local\Temp\xcAse28.o
+start 1C 0 CODE 0 init C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
 _ADC_8bits 542 0 CODE 0 text29 dist/default/production\ed2_1.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __end_of_ADC_reference_default 4D0 0 CODE 0 text24 dist/default/production\ed2_1.X.production.o
@@ -419,12 +419,12 @@ _digital_value 7B 0 COMMON 1 bssCOMMON dist/default/production\ed2_1.X.productio
 __end_of_peripheral_interruptions_on 552 0 CODE 0 text11 dist/default/production\ed2_1.X.production.o
 __end_of_portD_digout 4F2 0 CODE 0 text3 dist/default/production\ed2_1.X.production.o
 _ADC_reference_default 4C6 0 CODE 0 text24 dist/default/production\ed2_1.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAse28.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAse28.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAse28.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAse28.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAse28.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAse28.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\ed2_1.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\ed2_1.X.production.o
@@ -446,8 +446,8 @@ __end_of_osc4MHz 498 0 CODE 0 text12 dist/default/production\ed2_1.X.production.
 ___awdiv@divisor 30 0 BANK0 1 cstackBANK0 dist/default/production\ed2_1.X.production.o
 __end_of___awdiv 26E 0 CODE 0 text18 dist/default/production\ed2_1.X.production.o
 __end_of_ADC_AN12 4A6 0 CODE 0 text28 dist/default/production\ed2_1.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\lemus\AppData\Local\Temp\xcAse28.o
-___stacklo 0 0 ABS 0 - C:\Users\lemus\AppData\Local\Temp\xcAse28.o
+___stackhi 0 0 ABS 0 - C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
+___stacklo 0 0 ABS 0 - C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
 _pinRB0_digin 51A 0 CODE 0 text10 dist/default/production\ed2_1.X.production.o
 _initiateports 47A 0 CODE 0 text15 dist/default/production\ed2_1.X.production.o
 _global_interruptions_on 552 0 CODE 0 text16 dist/default/production\ed2_1.X.production.o
@@ -463,7 +463,7 @@ _Timer0_source 4BC 0 CODE 0 text21 dist/default/production\ed2_1.X.production.o
 __end_of_portA_digout 50A 0 CODE 0 text7 dist/default/production\ed2_1.X.production.o
 __pcstackBANK0 30 0 BANK0 1 cstackBANK0 dist/default/production\ed2_1.X.production.o
 _pinRB7_digin 50A 0 CODE 0 text8 dist/default/production\ed2_1.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\lemus\AppData\Local\Temp\xcAse28.o
+___int_sp 0 0 STACK 2 stack C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -520,7 +520,7 @@ __end_of_pinRB7_digin 512 0 CODE 0 text8 dist/default/production\ed2_1.X.product
 _analog_12 4B2 0 CODE 0 text20 dist/default/production\ed2_1.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
 __end_of_initiateports 48A 0 CODE 0 text15 dist/default/production\ed2_1.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\lemus\AppData\Local\Temp\xcAse28.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\lemus\AppData\Local\Temp\xcAsfs0.o
 _peripheral_interruptions_on 54E 0 CODE 0 text11 dist/default/production\ed2_1.X.production.o
 __pdataBANK0 20 0 BANK0 1 dataBANK0 dist/default/production\ed2_1.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -

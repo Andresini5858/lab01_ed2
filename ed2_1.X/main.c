@@ -65,18 +65,17 @@ void main(void){
     ADC_8bits(); //Utilizar ADC con 8 bits
     ADC_AN12(); //Utilizar canal 12 para el ADC
     ADC_on(); //Encender el ADC
-    TMR0 = 236; //Valor del Timer0 para 5ms de delay
+    TMR0 = 255; //Valor del Timer0 para delay lo más rápido posible del multiplexeo
     while(1){ //loop principal
         ADCON0bits.GO = 1; //iniciar conversión ADC
         display_hex(num_adc); //función de display
-        
     }
 }
 
 void __interrupt() isr(void){ //interrupciones
     if (INTCONbits.T0IF == 1){ //revisar bandera de interrupcion del Timer0
         INTCONbits.T0IF = 0; //limpiar bandera
-        TMR0 = 236; //cargar valor nuevamente al timer0
+        TMR0 = 255; //cargar valor nuevamente al timer0
         if (select == 0){ //revisar selector de muxeo
             mux(select); //estar mostrando valores en display continuamente
             select = 1;  //cambiar variable para el segundo display
